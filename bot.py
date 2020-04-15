@@ -27,7 +27,7 @@ def get_weather(city):
     url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=metric&appid=" + config.weather_token
     rsp_data = requests.get(url).json()
     try:
-        output_main = "📍{city} - " \
+        output_main = "📍{city}, {country} - " \
                       "{description} {emoji}\n\n" \
                       "Temperature: {temp} ‎°C\n" \
                       "Feels like: {feels_like} °C\n\n" \
@@ -38,7 +38,8 @@ def get_weather(city):
                                                          pressure=rsp_data['main']['pressure'],
                                                          humidity=rsp_data['main']['humidity'],
                                                          city=city.title(),
-                                                         emoji=emoji(rsp_data['weather'][0]['main']))
+                                                         emoji=emoji(rsp_data['weather'][0]['main']),
+                                                         country=rsp_data['sys']['country'])
     except Exception as err:
         print("Error: " + str(err))
         output_main = "I can't get weather from the server. Please, try again."
