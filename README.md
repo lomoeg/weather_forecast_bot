@@ -24,7 +24,7 @@
 - {wind_speed}
 - 'main' field from API response
 ```
-📍{city} - {description} {emoji}
+📍{city}, {country} - {description} {emoji}
 Temperature: {temp} °C
 Feels like: {feels_like} °C
 Pressure: {pressure} hPa
